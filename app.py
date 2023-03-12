@@ -1,4 +1,4 @@
-import openai 
+import openai
 import requests
 from datetime import datetime
 import argparse
