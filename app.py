@@ -24,7 +24,10 @@ class OpenAI:
         file_name = self.user_name + ' ' + self.image_text + ' ' + self.getTimestamp()
         file_name = file_name.lower().strip().replace(' ', '_') + '.jpg'
         response = requests.get(image_url)
-        result_image_path = os.getcwd() + os.sep + 'output_images' + os.sep + file_name
+        image_path = os.getcwd() + os.sep + 'output_images'
+        if os.path.exists(image_path) == False:
+            os.makedirs(image_path)
+        result_image_path = image_path + os.sep + file_name
         with open(result_image_path, "wb") as fp:
             fp.write(response.content)
         print('Image downloaded: ' + result_image_path)
